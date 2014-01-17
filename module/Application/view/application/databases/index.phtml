@@ -1,0 +1,30 @@
+<h1>Database instances</h1>
+
+<br>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Flavor</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <? foreach ($this->databases as $database): ?>
+        <tr>
+            <td><?= $database->name ?></td>
+
+            <? $flavorId = $database->flavor->id; ?>
+            <td><?= (isset($this->flavors[$flavorId])) ? $this->flavors[$flavorId] : $flavorId ?></td>
+
+            <? $status = $database->status ?>
+            <td>
+                <img src="<?= $this->basePath('img/' . (($status == 'ACTIVE') ? 'active' : 'inactive') . '.png') ?>"/>
+                <?= ucfirst(strtolower($status)); ?>
+            </td>
+
+        </tr>
+    <? endforeach; ?>
+    </tbody>
+</table>

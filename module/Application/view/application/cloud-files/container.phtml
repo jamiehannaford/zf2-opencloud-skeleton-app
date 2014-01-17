@@ -1,0 +1,35 @@
+<? if ($container == false): ?>
+
+    <h1>Whoa</h1>
+
+    <p>No container found :(</p>
+
+<? else: ?>
+
+    <h1><?= $container->getName() ?></h1>
+    <br>
+    <strong>Object count</strong> <?= $container->getObjectCount(); ?>
+    <br>
+    <strong>Bytes used</strong> <?= $container->getBytesUsed(); ?>
+
+    <h3>Files</h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <? foreach ($files as $file): ?>
+            <tr>
+                <? $name = $file->getName() ?>
+                <td>
+                    <a href="<?= $this->url('cloud-files/file', array('container' => $container->getName(), 'name' => $name)) ?>"><?= $name; ?></a>
+                </td>
+            </tr>
+        <? endforeach; ?>
+        </tbody>
+    </table>
+
+<? endif; ?>

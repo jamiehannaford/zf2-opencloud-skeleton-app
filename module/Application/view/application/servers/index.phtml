@@ -1,0 +1,37 @@
+<h1>Servers</h1>
+
+<br>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Flavor</th>
+        <th>Status</th>
+        <th>Created</th>
+    </tr>
+    </thead>
+    <tbody>
+    <? foreach ($this->servers as $server): ?>
+        <tr>
+            <td><?= $server->name ?></td>
+
+            <? $imageId = $server->image->id; ?>
+            <td><?= (isset($this->images[$imageId])) ? $this->images[$imageId] : $imageId ?></td>
+
+            <? $flavorId = $server->flavor->id; ?>
+            <td><?= (isset($this->flavors[$flavorId])) ? $this->flavors[$flavorId] : $flavorId ?></td>
+
+            <? $status = $server->status ?>
+            <td>
+                <img src="<?= $this->basePath('img/' . (($status == 'ACTIVE') ? 'active' : 'inactive') . '.png') ?>"/>
+                <?= ucfirst(strtolower($status)); ?>
+            </td>
+
+            <td><?= $server->created; ?></td>
+
+        </tr>
+    <? endforeach; ?>
+    </tbody>
+</table>

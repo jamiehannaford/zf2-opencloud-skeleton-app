@@ -1,0 +1,35 @@
+<? if ($file == false): ?>
+
+    <h1>Whoa</h1>
+
+    <p>No file found :(</p>
+
+<? else: ?>
+
+    <h1><?= $file->getName() ?></h1>
+    <br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Content type</th>
+            <th>Content length</th>
+            <th>Last modified</th>
+            <th>ETag checksum</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><?= $file->getContentType() ?></td>
+            <td><?= $file->getContentLength() ?> bytes</td>
+            <td><?= $file->getLastModified() ?></td>
+            <td><?= $file->getEtag() ?></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <img src="<?= $file->getPublicUrl() ?>" style="max-width:1100px"/>
+
+<? endif; ?>

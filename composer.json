@@ -1,0 +1,11 @@
+{
+    "name": "jamiehannaford/zf2-opencloud-skeleton-app",
+    "description": "Skeleton Application for php-opencloud-zf2",
+    "minimum-stability": "stable",
+    "license": "Apache-2.0",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.2.*",
+        "jamiehannaford/php-opencloud-zf2": "~1.0"
+    }
+}

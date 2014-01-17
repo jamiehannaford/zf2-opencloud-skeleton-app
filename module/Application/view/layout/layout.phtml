@@ -1,0 +1,71 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle('Rackspace PHP-OpenCloud ' . $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <!-- Le styles -->
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath() . '/css/style.css')
+        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+
+    <!-- Scripts -->
+    <?php echo $this->headScript()
+        ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+        ->prependFile($this->basePath() . '/js/jquery.min.js')
+        ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+        ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',)); ?>
+
+    <? $current = $_SERVER['REQUEST_URI']; ?>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://developer.rackspace.com"><img style="height:40px;margin:5px 10px 5px 5px;"
+                                                          src="<?php echo $this->basePath('img/logo.png') ?>"
+                                                          alt="Rackspace developers"/></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li <? if ($current == '/'): ?>class="active"<? endif; ?>>
+                    <a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a>
+                </li>
+                <li <? if ($current != '/' && preg_match('#\/servers#', $current)): ?>class="active"<? endif; ?>>
+                    <a href="<?php echo $this->url('servers') ?>">Servers</a>
+                </li>
+                <li <? if ($current != '/' && preg_match('#\/cloud-files#', $current)): ?>class="active"<? endif; ?>>
+                    <a href="<?php echo $this->url('cloud-files') ?>">Containers</a>
+                </li>
+                <li <? if ($current != '/' && preg_match('#\/databases#', $current)): ?>class="active"<? endif; ?>>
+                    <a href="<?php echo $this->url('databases') ?>">Databases</a>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="container">
+    <?php echo $this->content; ?>
+    <hr>
+    <footer>
+        <p>&copy; <?php echo date('Y') ?> Rackspace. <?php echo $this->translate('All rights reserved.') ?></p>
+    </footer>
+</div>
+<!-- /container -->
+<?php echo $this->inlineScript() ?>
+</body>
+</html>

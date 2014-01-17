@@ -1,0 +1,25 @@
+<h1>Containers</h1>
+
+<br>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>File count</th>
+        <th>Byte size</th>
+    </tr>
+    </thead>
+    <tbody>
+    <? foreach ($this->containers as $container): ?>
+        <tr>
+            <? $name = $container->getName() ?>
+            <td>
+                <a href="<?= $this->url('cloud-files/container', array('name' => $name)) ?>"><?= $name; ?></a>
+            </td>
+            <td><?= $container->getObjectCount(); ?></td>
+            <td><?= $container->getBytesUsed(); ?></td>
+        </tr>
+    <? endforeach; ?>
+    </tbody>
+</table>
